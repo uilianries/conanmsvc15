@@ -15,7 +15,7 @@ RUN choco install --yes --execution-timeout=7200 vcbuildtools -ia "/Full"
 
 RUN python -m pip install --upgrade pip
 RUN pip install win-unicode-console
-RUN pip install conan conan_package_tools--upgrade --force-reinstall --no-cache
+RUN pip install conan conan_package_tools --upgrade --force-reinstall --no-cache
 
 WORKDIR "C:/Users/ContainerAdministrator"
 ENTRYPOINT ["cmd.exe", "C:\\Program Files (x86)\\Microsoft Visual C++ Build Tools\\vcbuildtools_msbuild.bat"]
