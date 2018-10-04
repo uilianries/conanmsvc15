@@ -3,6 +3,7 @@ image: Visual Studio 2017
 
 environment:
   DOCKER_IMAGE: uilianries/conanmsvc14
+  DOCKER_CONTAINER: conanmsvc14
   DOCKER_USERNAME:
     secure: f4lJhL/Ls1T9CB7FmhoYQg==
   DOCKER_PASSWORD:
@@ -18,7 +19,15 @@ build_script:
   - docker build -t %DOCKER_IMAGE% .
 
 test_script:
-  - docker run %DOCKER_IMAGE%
+- docker run -t -d --name %DOCKER_CONTAINER% %DOCKER_IMAGE%
+- docker exec %DOCKER_CONTAINER% pip install -U conan_package_tools
+- docker exec %DOCKER_CONTAINER% pip install -U conan
+- docker exec %DOCKER_CONTAINER% conan profile new default --detect
+- docker exec %DOCKER_CONTAINER% conan profile show default
+- docker exec %DOCKER_CONTAINER% conan install gtest/1.8.0@lasote/stable -s arch=x86_64 -s compiler="Visual Studio" -s compiler.version=14 -s compiler.runtime=MD --build
+- docker exec %DOCKER_CONTAINER% conan install gtest/1.8.0@lasote/stable -s arch=x86 -s compiler="Visual Studio" -s compiler.version=14 -s compiler.runtime=MD --build
+- docker stop %DOCKER_CONTAINER%
+- docker rm %DOCKER_CONTAINER%
 
 deploy_script:
   - docker push %DOCKER_IMAGE%
