@@ -15,10 +15,10 @@ before_build:
   - docker login -u=%DOCKER_USERNAME% -p=%DOCKER_PASSWORD%
 
 build_script:
-  - docker build -t "$env:DOCKER_IMAGE" .
+  - docker build -t %DOCKER_IMAGE% .
 
 test_script:
-  - docker run "$env:DOCKER_IMAGE"
+  - docker run %DOCKER_IMAGE%
 
 deploy_script:
-  - docker push "$env:DOCKER_IMAGE"
+  - docker push %DOCKER_IMAGE%
