@@ -3,6 +3,10 @@ image: Visual Studio 2017
 
 environment:
   DOCKER_IMAGE: uilianries/conanmsvc14
+  DOCKER_USERNAME:
+    secure: f4lJhL/Ls1T9CB7FmhoYQg==
+  DOCKER_PASSWORD:
+    secure: Mj/+n6vhgoBU8Qw1D2AaQY6tWNIrq8fLyOLgNpVZ4qI=
 
 install:
   - docker version
