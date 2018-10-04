@@ -6,7 +6,7 @@ environment:
   DOCKER_USERNAME:
     secure: f4lJhL/Ls1T9CB7FmhoYQg==
   DOCKER_PASSWORD:
-    secure: Mj/+n6vhgoBU8Qw1D2AaQY6tWNIrq8fLyOLgNpVZ4qI=
+    secure: XiHVjf0YM4mciHUdZJ2iJuYbmDzEPnJTjoEsImTkexw=
 
 install:
   - docker version
