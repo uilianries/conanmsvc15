@@ -1,0 +1,18 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+
+install:
+  - docker version
+
+environment:
+  DOCKER_IMAGE: uilianries/conanmsvc14
+
+build_script:
+  - docker build -t "$env:DOCKER_IMAGE" .
+
+test_script:
+  - docker run "$env:DOCKER_IMAGE"
+
+deploy_script:
+  - docker login -u="$env:DOCKER_USERNAME" -p="$env:DOCKER_PASSWORD"
+  - docker push "$env:DOCKER_IMAGE"
