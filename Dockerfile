@@ -15,8 +15,8 @@ RUN choco install --yes cmake --version=3.12.2 --params '"/InstallDir:C:\tools\c
 RUN choco install --yes python3 --version=3.7.0 --params '"/InstallDir:C:\tools\python3"'
 
 RUN choco install --yes visualstudio2017buildtools --version=15.8.2.0 --execution-timeout=7200
-RUN choco install --yes visualstudio2017-workload-vctools --params "--add Microsoft.VisualStudio.Component.VC.ATL"
-RUN choco install --yes visualstudio2017-workload-manageddesktop --params "--add Microsoft.Net.ComponentGroup.TargetingPacks.Common"
+RUN choco install --yes visualstudio2017-workload-vctools --version=1.3.0
+RUN choco install --yes visualstudio2017-workload-manageddesktop --version=1.2.0 --params "--add Microsoft.Net.ComponentGroup.TargetingPacks.Common"
 
 RUN python -m pip install --upgrade pip
 RUN pip install win-unicode-console --upgrade --force-reinstall --no-cache
