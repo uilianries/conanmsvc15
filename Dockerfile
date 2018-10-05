@@ -14,16 +14,19 @@ RUN choco install --yes svn --version=1.8.17 --params '"/InstallDir:C:\tools\svn
 RUN choco install --yes cmake --version=3.12.2 --params '"/InstallDir:C:\tools\cmake"' --installargs 'ADD_CMAKE_TO_PATH=""System""'
 RUN choco install --yes python3 --version=3.7.0 --params '"/InstallDir:C:\tools\python3"'
 
-RUN choco install --yes visualstudio2017buildtools --version=15.8.2.0 --execution-timeout=7200
+RUN choco install --yes visualstudio2017buildtools --version=15.8.2.0
 RUN choco install --yes visualstudio2017-workload-vctools --version=1.3.0
-RUN choco install --yes visualstudio2017-workload-manageddesktop --version=1.2.0 --params "--add Microsoft.Net.ComponentGroup.TargetingPacks.Common"
+RUN choco install --yes visualstudio2017-workload-manageddesktop --version=1.2.0
+
+RUN RefreshEnv
 
 RUN python -m pip install --upgrade pip
 RUN pip install win-unicode-console --upgrade --force-reinstall --no-cache
-RUN pip install conan conan_package_tools --upgrade --force-reinstall --no-cache
+RUN pip install conan --upgrade --force-reinstall --no-cache
+RUN pip install conan_package_tools --upgrade --force-reinstall --no-cache
 
 # FIXME (uilian): idna raises error when installed by Conan/CPT
-RUN pip install idna --upgrade --force-reinstall --no-cache
+# RUN pip install idna --upgrade --force-reinstall --no-cache
 
 WORKDIR "C:/Users/ContainerAdministrator"
 ENTRYPOINT ["cmd.exe", "C:\\Program Files (x86)\\Microsoft Visual C++ Build Tools\\vcbuildtools_msbuild.bat"]
