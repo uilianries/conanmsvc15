@@ -21,6 +21,7 @@ build_script:
 
 test_script:
 - docker run -t -d --name %DOCKER_CONTAINER% %DOCKER_IMAGE%
+- docker exec %DOCKER_CONTAINER% cl.exe
 - docker exec %DOCKER_CONTAINER% pip install -U conan_package_tools
 - docker exec %DOCKER_CONTAINER% pip install -U conan
 - docker exec %DOCKER_CONTAINER% conan profile new default --detect
