@@ -24,8 +24,8 @@ test_script:
 - docker exec %DOCKER_CONTAINER% pip install -U conan
 - docker exec %DOCKER_CONTAINER% conan profile new default --detect
 - docker exec %DOCKER_CONTAINER% conan profile show default
-- docker exec %DOCKER_CONTAINER% conan install gtest/1.8.0@lasote/stable -s arch=x86_64 -s compiler="Visual Studio" -s compiler.version=14 -s compiler.runtime=MD --build
-- docker exec %DOCKER_CONTAINER% conan install gtest/1.8.0@lasote/stable -s arch=x86 -s compiler="Visual Studio" -s compiler.version=14 -s compiler.runtime=MD --build
+- docker exec %DOCKER_CONTAINER% conan install bzip2/1.0.6@conan/stable -s arch=x86_64 -s compiler="Visual Studio" -s compiler.version=14 -s compiler.runtime=MD --build
+- docker exec %DOCKER_CONTAINER% conan install bzip2/1.0.6@conan/stable -s arch=x86 -s compiler="Visual Studio" -s compiler.version=14 -s compiler.runtime=MD --build
 - docker stop %DOCKER_CONTAINER%
 - docker rm %DOCKER_CONTAINER%
 
