@@ -12,8 +12,7 @@ RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.or
 RUN choco install --yes cmake --params '"/InstallDir:C:\tools\cmake"' --installargs 'ADD_CMAKE_TO_PATH=""System""'
 RUN choco install --yes python3 --params '"/InstallDir:C:\tools\python3"'
 
-RUN choco install --yes visualstudio2017buildtools --execution-timeout=7200 --pacakge-parameters "--includeRecommend --includeOptional"
-RUN choco install --yes visualstudio2017-workload-vctools "--includeRecommend --includeOptional"
+RUN choco install --yes visualstudio2017buildtools --version=15.8.2.0 --execution-timeout=7200 --pacakge-parameters "--includeRecommend --includeOptional"
 
 RUN python -m pip install --upgrade pip
 RUN pip install win-unicode-console --upgrade --force-reinstall --no-cache
