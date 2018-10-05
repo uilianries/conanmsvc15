@@ -1,7 +1,7 @@
 version: '3'
 services:
-    conanmsvc14:
+    conanmsvc15:
     build: .
-    image: "uilianries/conanmsvc14:latest"
-    container_name: conanmsvc14
+    image: "uilianries/conanmsvc15:latest"
+    container_name: conanmsvc15
     tty: true

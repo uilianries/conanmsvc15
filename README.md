@@ -1,2 +1,2 @@
-# conanmsvc14
-Docker image for MSVC 14.0 + Conan.io
+# conanmsvc15
+Docker image for MSVC 15.0 + Conan.io
