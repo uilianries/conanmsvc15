@@ -13,6 +13,7 @@ RUN choco install --yes cmake --params '"/InstallDir:C:\tools\cmake"' --installa
 RUN choco install --yes python3 --params '"/InstallDir:C:\tools\python3"'
 
 RUN choco install --yes visualstudio2017buildtools --version=15.8.2.0 --execution-timeout=7200 --pacakge-parameters "--includeRecommend --includeOptional"
+RUN choco install --yes visualstudio2017-workload-vctools --version=1.3.0 "--includeRecommend --includeOptional"
 
 RUN python -m pip install --upgrade pip
 RUN pip install win-unicode-console --upgrade --force-reinstall --no-cache
