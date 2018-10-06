@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'win1803'
 
 variables:
   DOCKER_CONTAINER: 'conanmsvc15'
