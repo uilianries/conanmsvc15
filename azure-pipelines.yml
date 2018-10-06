@@ -11,5 +11,21 @@ variables:
   DOCKER_IMAGE: 'uilianries/$(DOCKER_CONTAINER):$(build.buildId)'
 
 steps:
-- script: docker build -f Dockerfile -t $(DOCKER_IMAGE) .
+- script: |
+    docker login -u="$(DOCKER_USERNAME)" -p=$(DOCKER_PASSWORD)"
+    docker build -f Dockerfile -t $(DOCKER_IMAGE) .
+    docker images
+    docker run -t -d --name $(DOCKER_CONTAINER) $(DOCKER_IMAGE)
+    docker exec $(DOCKER_CONTAINER) cl.exe
+    docker exec $(DOCKER_CONTAINER) pip install -U conan_package_tools
+    docker exec $(DOCKER_CONTAINER) pip install -U conan
+    docker exec $(DOCKER_CONTAINER) conan profile new default --detect
+    docker exec $(DOCKER_CONTAINER) conan profile show default
+    docker exec $(DOCKER_CONTAINER) conan install bzip2/1.0.6@conan/stable -s arch=x86_64 -s compiler="Visual Studio" -s compiler.version=15 -s compiler.runtime=MD --build
+    docker exec $(DOCKER_CONTAINER) conan install bzip2/1.0.6@conan/stable -s arch=x86 -s compiler="Visual Studio" -s compiler.version=15 -s compiler.runtime=MD --build
+    docker exec $(DOCKER_CONTAINER) conan install gtest/1.8.1@bincrafters/stable -s arch=x86_64 -s compiler="Visual Studio" -s compiler.version=15 -s compiler.runtime=MD --build
+    docker exec $(DOCKER_CONTAINER) conan install gtest/1.8.1@bincrafters/stable -s arch=x86 -s compiler="Visual Studio" -s compiler.version=15 -s compiler.runtime=MD --build
+    docker stop $(DOCKER_CONTAINER)
+    docker rm $(DOCKER_CONTAINER)
+    docker push $(DOCKER_IMAGE)
   displayName: 'docker build'
