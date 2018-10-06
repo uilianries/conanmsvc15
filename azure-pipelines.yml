@@ -12,7 +12,7 @@ variables:
 
 steps:
 - script: |
-    docker login -u="$(DOCKER_USERNAME)" -p=$(DOCKER_PASSWORD)"
+    docker login -u="%DOCKER_USERNAME%" -p="%DOCKER_PASSWORD%"
     docker build -f Dockerfile -t $(DOCKER_IMAGE) .
     docker images
     docker run -t -d --name $(DOCKER_CONTAINER) $(DOCKER_IMAGE)
