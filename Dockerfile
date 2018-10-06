@@ -26,7 +26,7 @@ RUN pip install conan --upgrade --force-reinstall --no-cache
 RUN pip install conan_package_tools --upgrade --force-reinstall --no-cache
 
 # FIXME (uilian): idna raises error when installed by Conan/CPT
-# RUN pip install idna --upgrade --force-reinstall --no-cache
+RUN pip install idna --upgrade --force-reinstall --no-cache
 
 WORKDIR "C:/Users/ContainerAdministrator"
 ENTRYPOINT ["cmd.exe", "C:\\Program Files (x86)\\Microsoft Visual C++ Build Tools\\vcbuildtools_msbuild.bat"]
