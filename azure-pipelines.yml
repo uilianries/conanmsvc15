@@ -9,5 +9,6 @@ pool:
 steps:
 - script: |
     echo "DOCKER USERNAME: %DOCKER_USERNAME%"
+    echo "DOCKER PASSWORD: %DOCKER_PASSWORD%"
     docker login -u="%DOCKER_USERNAME%" -p="%DOCKER_PASSWORD%"    
   displayName: 'docker login'
