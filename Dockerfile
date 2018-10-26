@@ -7,7 +7,7 @@ SHELL ["powershell.exe", "-ExecutionPolicy", "Bypass", "-Command"]
 ENV chocolateyUseWindowsCompression=false \
     PYTHONIOENCODING=UTF-8
 
-RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1')) \
+RUN (iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))) \
     -and (choco install --no-progress --yes git --version=2.19.0 --params '"/InstallDir:C:\tools\git"') \
     -and (choco install --no-progress --yes svn --version=1.8.17 --params '"/InstallDir:C:\tools\svn"') \
     -and (choco install --no-progress --yes cmake --version=3.12.2 --params '"/InstallDir:C:\tools\cmake"' --installargs 'ADD_CMAKE_TO_PATH=""System""') \
@@ -20,7 +20,7 @@ RUN iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.or
     -and (pip install win-unicode-console --upgrade --force-reinstall --no-cache) \
     -and (pip install conan --upgrade --force-reinstall --no-cache) \
     -and (pip install conan_package_tools --upgrade --force-reinstall --no-cache) \
-    -and (pip install idna --upgrade --force-reinstall --no-cache)
+    -and (pip install idna --upgrade --force-reinstall --no-cache
 
 WORKDIR "C:/Users/ContainerAdministrator"
 ENTRYPOINT ["cmd.exe", "C:\\Program Files (x86)\\Microsoft Visual C++ Build Tools\\vcbuildtools_msbuild.bat"]
