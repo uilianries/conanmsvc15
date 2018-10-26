@@ -1,4 +1,4 @@
-FROM microsoft/windowsservercore:10.0.14393.2485
+FROM microsoft/windowsservercore:1803
 
 LABEL maintainer="Uilian Ries <uilianries@gmail.com>"
 
